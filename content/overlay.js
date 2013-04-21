@@ -1,14 +1,14 @@
 (function() {
   jQuery.noConflict();
-  $ = function(selector, context) { 
-    return new jQuery.fn.init(selector, context || rps.doc); 
+  $ = function(selector, context) {
+    return new jQuery.fn.init(selector, context || rps.doc);
   };
   $.fn = $.prototype = jQuery.fn;
 
   rps = new function() {};
   rps.run = function(doc, aEvent) {
     // Check for website
-    if (!doc.location.href.match(/^http:\/\/p\.eagate\.573\.jp(\/.*)?$/i))  
+    if (!doc.location.href.match(/^http:\/\/p\.eagate\.573\.jp(\/.*)?$/i))
       return;
 
     // Check if already loaded
@@ -23,17 +23,17 @@
     $('#btn-rps').click(function() {
       $('<p>読込中...</p>').prependTo(doc.body);
       loadScoreData();
-    }); 
+    });
   };
 
   // Bind Plugin
-  var delay = function(aEvent) { 
-    var doc = aEvent.originalTarget; setTimeout(function() { 
+  var delay = function(aEvent) {
+    var doc = aEvent.originalTarget; setTimeout(function() {
       rps.run(doc, aEvent);
-    }, 1); 
+    }, 1);
   };
-  var load = function() { 
-    gBrowser.addEventListener("DOMContentLoaded", delay, true); 
+  var load = function() {
+    gBrowser.addEventListener("DOMContentLoaded", delay, true);
   };
   window.addEventListener("pageshow", load, false);
 })();
