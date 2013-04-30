@@ -10,8 +10,7 @@ function loadScoreData() {
   url += '&page=' + page;
   url += '&' + (new Date().getTime());
 
-
-  Firebug.Console.log(url);
+  logger(url);
 
   var xhr = new XMLHttpRequest();
 
@@ -23,7 +22,7 @@ function loadScoreData() {
     xhr.send();
     xhr.onreadystatechange = function() {
       if (xhr.readyState == 4 && xhr.status == 200) {
-        Firebug.Console.log(xhr.responseText);
+        logger(xhr.responseText);
       }
     };
   };

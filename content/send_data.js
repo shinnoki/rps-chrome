@@ -4,9 +4,9 @@ function sendScoreData() {
   var page = 1;
   var url  = 'http://tmp.beatech.net/users/create';
 
-  Firebug.Console.log(url);
+  logger(url);
 
-  var data = { iidxid: '4444-4444', djname: 'test' }; // POSTリクエストで送信するデータ
+  var data = { iidxid: '9999-9999', djname: 'aaaa' }; // POSTリクエストで送信するデータ
 
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
@@ -14,11 +14,23 @@ function sendScoreData() {
     var HTTP_STATUS_OK = 200;
 
     if( xhr.readyState == READYSTATE_COMPLETED && xhr.status == HTTP_STATUS_OK ) {
-      alert( xhr.responseText );
+      logger(xhr.responseText);
     }
   };
 
   xhr.open('POST', url);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.send(EncodeHTMLForm(data));
+}
+
+function EncodeHTMLForm(data) {
+  var params = [];
+
+  for (var name in data) {
+    var value = data[name];
+    var param = encodeURIComponent( name ).replace( /%20/g, '+' )
+          + '=' + encodeURIComponent( value ).replace( /%20/g, '+' );
+    params.push( param );
+  }
+  return params.join( '&' );
 }
