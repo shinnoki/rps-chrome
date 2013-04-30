@@ -2,7 +2,7 @@ function sendScoreData() {
   var list = 0;
   var sort = 2;
   var page = 1;
-  var url  = 'http://rps.beatech.net/users/create';
+  var url  = 'http://tmp.beatech.net/users/create';
 
   Firebug.Console.log(url);
 
