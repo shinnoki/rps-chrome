@@ -1,31 +1,24 @@
-function loadScoreData() {
-  var list = 0;
-  var sort = 2;
-  var page = 1;
-  var url  = 'http://p.eagate.573.jp/game/2dx/20/p/djdata/music.html';
-  var url2 = 'http://p.eagate.573.jp/game/2dx/20/p/djdata/music_info.html?index=1';
-
-  url += '?list=' + list;
-  url += '&s=' + sort;
-  url += '&page=' + page;
-  url += '&' + (new Date().getTime());
-
-  logger(url);
-
+function getAndCallBack(url, data, callback) {
   var xhr = new XMLHttpRequest();
 
+  url += encodeGetForm(data);
   xhr.open("GET", url, true);
   xhr.send();
-
-  func = function() {
-    xhr.open("GET", url2, true);
-    xhr.send();
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        logger(xhr.responseText);
-      }
-    };
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      callback(xhr.responseText);
+    }
   };
-  xhr.onreadystatechange = func;
-  getAndCallback(nil, nil);
+}
+
+function encodeGetForm(data) {
+  var params = [];
+
+  for (var name in data) {
+    var value = data[name];
+    var param = encodeURIComponent(name).replace(/%20/g, '+')
+          + '=' + encodeURIComponent(value).replace(/%20/g, '+');
+    params.push(param);
+  }
+  return '?' + params.join('&');
 }
