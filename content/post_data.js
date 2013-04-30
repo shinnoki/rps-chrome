@@ -1,12 +1,13 @@
-function sendScoreData() {
+function createUser(iidxid, djname) {
+  var url  = 'http://tmp.beatech.net/users/create';
+  var data = { iidxid: iidxid, djname: djname };
+  sendDataToURL(url, data);
+}
+
+function sendDataToURL(url, data) {
   var list = 0;
   var sort = 2;
   var page = 1;
-  var url  = 'http://tmp.beatech.net/users/create';
-
-  logger(url);
-
-  var data = { iidxid: '9999-9999', djname: 'aaaa' }; // POSTリクエストで送信するデータ
 
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
@@ -32,5 +33,5 @@ function EncodeHTMLForm(data) {
           + '=' + encodeURIComponent( value ).replace( /%20/g, '+' );
     params.push( param );
   }
-  return params.join( '&' );
+  return params.join('&');
 }
