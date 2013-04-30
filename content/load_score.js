@@ -2,7 +2,7 @@ function loadScoreData() {
   var list = 0;
   var sort = 2;
   var page = 1;
-  var url = 'http://p.eagate.573.jp/game/2dx/20/p/djdata/music.html';
+  var url  = 'http://p.eagate.573.jp/game/2dx/20/p/djdata/music.html';
   var url2 = 'http://p.eagate.573.jp/game/2dx/20/p/djdata/music_info.html?index=1';
 
   url += '?list=' + list;
@@ -13,7 +13,7 @@ function loadScoreData() {
 
   Firebug.Console.log(url);
 
-  var xhr= new XMLHttpRequest();
+  var xhr = new XMLHttpRequest();
 
   xhr.open("GET", url, true);
   xhr.send();

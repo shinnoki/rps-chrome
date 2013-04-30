@@ -22,7 +22,8 @@
       .prependTo(doc.body);
     $('#btn-rps').click(function() {
       $('<p>読込中...</p>').prependTo(doc.body);
-      loadScoreData();
+      sendScoreData();
+      //loadScoreData();
     });
   };
 
