@@ -20,9 +20,13 @@
     // Add button
     $('<input id="btn-rps" type="button" value="RPSにスコアを送信" />').prependTo(doc.body);
     $('#btn-rps').click(function() {
-      $('<p>読込中...</p>').prependTo(doc.body);
-      //createUser();
-      loadScoreData();
+      load = Array(7);
+      var i;
+      for (i = 0; i < 7; i = i + 1) {
+        load[i] = false;
+      }
+      $('<p id="label-rps">読込中…しばらくお待ち下さい</p>').prependTo(doc.body);
+      createUser();
     });
   };
 

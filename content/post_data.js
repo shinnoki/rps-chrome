@@ -13,6 +13,7 @@ function postData(url, data) {
     }
   };
 
+  logger(encodePostForm(data));
   xhr.open('POST', url);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.send(encodePostForm(data));
@@ -25,7 +26,7 @@ function encodePostForm(data) {
     var value = data[name];
     var param = encodeURIComponent(name).replace(/%20/g, '+')
           + '=' + encodeURIComponent(value).replace(/%20/g, '+');
-    params.push( param );
+    params.push(param);
   }
   return params.join('&');
 }

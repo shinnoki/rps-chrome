@@ -6,6 +6,7 @@ function createUser() {
     var rps_url  = 'http://tmp.beatech.net/users/create';
     var data = { iidxid: iidxid, djname: djname };
     postData(rps_url, data);
+    loadAllScoreData(iidxid);
   });
 }
 
