@@ -21,9 +21,8 @@
     $('<input id="btn-rps" type="button" value="RPSにスコアを送信" />').prependTo(doc.body);
     $('#btn-rps').click(function() {
       $('<p>読込中...</p>').prependTo(doc.body);
-      //createUser("1234-1234", "max burning");
-      //loadScoreData();
-      createUser();
+      //createUser();
+      loadScoreData();
     });
   };
 

@@ -8,7 +8,7 @@ function postData(url, data) {
     var READYSTATE_COMPLETED = 4;
     var HTTP_STATUS_OK = 200;
 
-    if( xhr.readyState == READYSTATE_COMPLETED && xhr.status == HTTP_STATUS_OK ) {
+    if (xhr.readyState == READYSTATE_COMPLETED && xhr.status == HTTP_STATUS_OK ) {
       logger(xhr.responseText);
     }
   };
