@@ -1,9 +1,3 @@
-function createUser(iidxid, djname) {
-  var url  = 'http://tmp.beatech.net/users/create';
-  var data = { iidxid: iidxid, djname: djname };
-  postData(url, data);
-}
-
 function postData(url, data) {
   var list = 0;
   var sort = 2;
@@ -21,7 +15,7 @@ function postData(url, data) {
 
   xhr.open('POST', url);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  xhr.send(encodeHTMLForm(data));
+  xhr.send(encodePostForm(data));
 }
 
 function encodePostForm(data) {

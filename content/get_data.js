@@ -1,7 +1,10 @@
 function getAndCallBack(url, data, callback) {
   var xhr = new XMLHttpRequest();
 
-  url += encodeGetForm(data);
+  if (data != null) {
+    url += encodeGetForm(data);
+  }
+  logger(url);
   xhr.open("GET", url, true);
   xhr.send();
   xhr.onreadystatechange = function() {

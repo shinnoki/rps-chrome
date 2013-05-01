@@ -14,6 +14,7 @@ href="chrome://IIDXScoreSenderForRPS/skin/overlay.css" ?>
   <script type="application/x-javascript" src="overlay.js" />
   <script type="application/x-javascript" src="post_data.js" />
   <script type="application/x-javascript" src="get_data.js" />
+  <script type="application/x-javascript" src="score.js" />
   <script type="application/x-javascript" src="user.js" />
   <script type="application/x-javascript" src="logger.js" />
 
