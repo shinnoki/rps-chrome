@@ -12,15 +12,12 @@ function loadScore(iidxid, order, index) {
     index: index
   };
   getAndCallBack(url, data, function(responseText) {
-    if (index == 175) {
-      if (order == 6) {
-        updateAllPower();
-        alert("スコア送信が完了しました。");
-      }
-      startLoading(iidxid, order + 1);
-      return;
-    }
     if (responseText.indexOf('サーバーに接続できません。') != -1) {
+      if (order == 6) {
+        updatePower();
+      } else {
+        startLoading(iidxid, order + 1);
+      }
       return;
     }
 
@@ -67,6 +64,7 @@ function loadScore(iidxid, order, index) {
     sendScoreData(iidxid, title, "DP", "A", clear_lamp[2], score[2], bp[2]);
 
     $('title').text(title);
+    loadScore(iidxid, order, index + 1);
   });
 }
 
@@ -79,10 +77,7 @@ function startLoading(iidxid, order) {
     page: 1
   };
   getAndCallBack(url, data, function() {
-    var i;
-    for (i = 0; i < 180; i = i + 1) {
-      loadScore(iidxid, order, i);
-    }
+    loadScore(iidxid, order, 0);
   });
 }
 
@@ -115,9 +110,9 @@ function sendScoreData(iidxid, title, playtype, difficulty, clear_lamp, score, b
   postData(url, data);
 }
 
-function updateAllPower() {
-  var url = 'http://rps.beatech.net/powers/update_all';
+function updatePower(iidxid) {
+  var url = 'http://rps.beatech.net/powers/update/' + iidxid;
   getAndCallBack(url, null, function(responseText) {
-    logger(responseText);
+    alert("スコアの送信が完了しました。");
   });
 }
