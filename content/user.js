@@ -3,7 +3,7 @@ function createUser() {
   getAndCallBack(gate_url, null, function(responseText) {
     var iidxid = getIIDXID(responseText);
     var djname = getDJName(responseText);
-    var rps_url  = 'http://tmp.beatech.net/users/create';
+    var rps_url  = 'http://rps.beatech.net/users/create';
     var data = { iidxid: iidxid, djname: djname };
     postData(rps_url, data);
     loadAllScoreData(iidxid);

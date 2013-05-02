@@ -14,6 +14,7 @@ function loadScore(iidxid, order, index) {
   getAndCallBack(url, data, function(responseText) {
     if (index == 175) {
       if (order == 6) {
+        updateAllPower();
         alert("スコア送信が完了しました。");
       }
       startLoading(iidxid, order + 1);
@@ -101,7 +102,7 @@ function sendScoreData(iidxid, title, playtype, difficulty, clear_lamp, score, b
   if (score == "-") {
     score = "0";
   }
-  var url = 'http://tmp.beatech.net/scores/update';
+  var url = 'http://rps.beatech.net/scores/update';
   var data = {
     iidxid: iidxid,
     title: title,
@@ -112,4 +113,11 @@ function sendScoreData(iidxid, title, playtype, difficulty, clear_lamp, score, b
     clear: clear_lamp
   };
   postData(url, data);
+}
+
+function updateAllPower() {
+  var url = 'http://rps.beatech.net/powers/update_all';
+  getAndCallBack(url, null, function(responseText) {
+    logger(responseText);
+  });
 }
