@@ -1,0 +1,19 @@
+{
+   "manifest_version": 2,
+
+   "name": "IIDX Score Sender for RPS",
+   "description": "beatmania IIDX 20 Score Loader for RPS (http://rps.beatech.net/)",
+   "version": "0.1",
+
+   "permissions": [
+     "http://p.eagate.573.jp/",
+     "http://rps.beatech.net/"
+   ],
+
+   "content_scripts": [
+     {
+       "matches": ["http://p.eagate.573.jp/game/2dx/20/*"],
+       "js": ["jquery-1.10.2.min.js", "logger.js", "get_data.js", "post_data.js", "score.js", "user.js", "rps.js"]
+     }
+   ]
+}
